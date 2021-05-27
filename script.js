@@ -11,12 +11,15 @@ bgsound.loop=true;
 changebtn.addEventListener("click",()=>{
     if(counter==1){
          bike.src="./ch2.png"
-         counter--
+         counter++
          console.log("true")
-    }else{
+    }else if(counter==2){
         counter++
         bike.src="./ch1.png"
         console.log("false",imgsrc)
+    }else{
+        bike.src="./ch3.png"
+        counter-=2
     }
 })
 startbtn.addEventListener("click", start)
@@ -55,7 +58,7 @@ function start() {
         offsetx = Math.abs(bx - cx);
         offsety = Math.abs(by - cy);
         console.log(offsetx, offsety)
-        if (offsetx < 170 && offsetx > 80 && offsety < 20) {
+        if (offsetx < 130 && offsetx > 80 && offsety < 20) {
             let road = document.getElementById("road");
             road.classList.remove("roadanime");
             console.log("gameover")
