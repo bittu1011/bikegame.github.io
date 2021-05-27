@@ -1,5 +1,5 @@
 let character=["./ch1.png","./ch2.png"];
-let cock = document.getElementById("cock");
+let obstacle = document.getElementById("obstacle");
 let bike = document.getElementById("image");
 let jumpbtn = document.getElementById("jumpbtn");
 let popup = document.querySelector("gov");
@@ -7,6 +7,7 @@ let startbtn = document.getElementById("startbtn");
 let bgsound = new Audio("bgsound.mp3");
 let changebtn=document.getElementById("characterbtn");
 let counter=1;
+bgsound.loop=true;
 changebtn.addEventListener("click",()=>{
     if(counter==1){
          bike.src="./ch2.png"
@@ -25,7 +26,7 @@ function start() {
     document.getElementById("startbtn").classList.add("hide")
     document.getElementById("back").classList.add("backanimation")
     document.getElementById("road").classList.add("roadanime")
-    cock.classList.add("cockmove")
+    obstacle.classList.add("obstaclemove")
     window.addEventListener("keydown", (e) => {
         console.log(e.key)
         if (e.key === "ArrowUp") {
@@ -49,12 +50,12 @@ function start() {
     setInterval(() => {
         let bx = parseInt(window.getComputedStyle(bike, null).getPropertyValue("left"));
         let by = parseInt(window.getComputedStyle(bike, null).getPropertyValue("bottom"));
-        let cx = parseInt(window.getComputedStyle(cock, null).getPropertyValue("left"));
-        let cy = parseInt(window.getComputedStyle(cock, null).getPropertyValue("bottom"));
+        let cx = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue("left"));
+        let cy = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue("bottom"));
         offsetx = Math.abs(bx - cx);
         offsety = Math.abs(by - cy);
         console.log(offsetx, offsety)
-        if (offsetx < 120 && offsetx > 80 && offsety < 20) {
+        if (offsetx < 170 && offsetx > 80 && offsety < 20) {
             let road = document.getElementById("road");
             road.classList.remove("roadanime");
             console.log("gameover")
@@ -71,14 +72,14 @@ function pausebtnFun() {
     document.getElementById("playPause").appendChild(plybtn);
     plybtn.addEventListener("click", () => {
         if (road.style.animationPlayState === "paused") {
-            cock.style.animationPlayState = "running";
+            obstacle.style.animationPlayState = "running";
             back.style.animationPlayState = "running";
             road.style.animationPlayState = "running";
             bike.style.animationPlayState = "running";
             bgsound.play();
         } else {
             bgsound.pause();
-            cock.style.animationPlayState = "paused";
+            obstacle.style.animationPlayState = "paused";
             back.style.animationPlayState = "paused";
             road.style.animationPlayState = "paused";
             bike.style.animationPlayState = "paused";
