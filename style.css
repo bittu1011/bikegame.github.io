@@ -14,8 +14,26 @@
     animation: backanimation 4s linear infinite;
 
 }
+#playPause,#playbtn,#characterbtn{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    z-index: 100;
+    top: 30%;
+    right: 10%;
+    border-radius: 50%;
+    visibility: visible;
+    border:none;
+    outline: none;
+    user-select:none;
+    -webkit-user-select: none;
+  -ms-user-select: none;
+}
+#characterbtn{
+    z-index: 80;
+    background-color: tomato;
+}
 body{
-    /* height: 100vh; */
     width: 100%;
     overflow: hidden;
 }
@@ -39,7 +57,6 @@ body{
     bottom: 20px;
     left: 10vw;
     width: 250px;
-    /* animation: bikeanimation 2s linear infinite; */
 }
 @keyframes roadanimation{
     100%{
@@ -145,7 +162,7 @@ body{
 }
 .gameover{
     position: absolute;
-    /* z-index: 1; */
+    z-index: 1;
     height: 90vh;
     width: 50vw;
     background-color: rgba(49, 34, 34, 0.52);
