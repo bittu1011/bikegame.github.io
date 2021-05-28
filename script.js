@@ -2,7 +2,6 @@ let character=["./ch1.png","./ch2.png"];
 let obstacle = document.getElementById("obstacle");
 let bike = document.getElementById("image");
 let jumpbtn = document.getElementById("jumpbtn");
-let popup = document.querySelector("gov");
 let startbtn = document.getElementById("startbtn");
 let bgsound = new Audio("bgsound.mp3");
 let changebtn=document.getElementById("characterbtn");
@@ -12,11 +11,9 @@ changebtn.addEventListener("click",()=>{
     if(counter==1){
          bike.src="./ch2.png"
          counter++
-         console.log("true")
     }else if(counter==2){
         counter++
         bike.src="./ch1.png"
-        console.log("false",imgsrc)
     }else{
         bike.src="./ch3.png"
         counter-=2
@@ -31,7 +28,6 @@ function start() {
     document.getElementById("road").classList.add("roadanime")
     obstacle.classList.add("obstaclemove")
     window.addEventListener("keydown", (e) => {
-        console.log(e.key)
         if (e.key === "ArrowUp") {
             jumpbtn.disabled = true;
             bike.classList.add("jump");
@@ -57,14 +53,10 @@ function start() {
         let cy = parseInt(window.getComputedStyle(obstacle, null).getPropertyValue("bottom"));
         offsetx = Math.abs(bx - cx);
         offsety = Math.abs(by - cy);
-        console.log(offsetx, offsety)
         if (offsetx < 130 && offsetx > 80 && offsety < 20) {
             let road = document.getElementById("road");
             road.classList.remove("roadanime");
-            console.log("gameover")
             window.location.reload()
-            popup.classList.add("gameover")
-
         }
     }, 100)
 }
